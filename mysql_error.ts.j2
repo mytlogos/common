@@ -1,0 +1,12 @@
+/**
+ * This is generated from https://dev.mysql.com/doc/mysql-errors/8.0/en/server-error-reference.html
+ */
+export enum MysqlServerError {
+{% for error in errors %}
+    /**
+     * Message: {{ error.message }}
+     * SQLState: {{ error.state }}
+     */
+    {{ error.name }} = {{ error.code }}{% if not loop.last %},{% endif %}
+{% endfor %}
+}
